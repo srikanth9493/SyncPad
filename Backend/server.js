@@ -1,4 +1,4 @@
-const ACTIONS=require('./src/Actions');
+const ACTIONS=require('./Actions');
 const express = require('express');
 const app = express();
 const http = require('http');
