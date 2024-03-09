@@ -18,8 +18,13 @@ function App() {
     </Toaster>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+
+        <Route path="/:roomId" element={<Home/>}></Route>
         <Route path="/editor/:roomID" element={<EditorPage/>}></Route>
+        <Route path="/" element={<Home/>} exac></Route>
+
+
+        
       </Routes>
     </BrowserRouter>
     </>

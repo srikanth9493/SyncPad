@@ -4,6 +4,9 @@ import { initsocket } from "../socket";
 import Client from "../components/Client";
 import Editor from "../components/Editor";
 import ACTIONS from "../Actions";
+
+import shareIcon from "../icons/export-share-icon.svg";
+
 import {
   useLocation,
   useParams,
@@ -18,6 +21,9 @@ const EditorPage = () => {
   const reactNavigator = useNavigate();
   const { roomID } = useParams();
   const [clients, setClients] = useState([]);
+
+  const baseURL = window.location.origin;
+
 
   useEffect(() => {
     const init = async () => {
@@ -72,7 +78,9 @@ const EditorPage = () => {
 
   async function copyRoomId() {
     try {
-        await navigator.clipboard.writeText(roomID);
+      console.log(baseURL,"baseURL")
+        await navigator.clipboard.writeText(baseURL+"/"+roomID);
+        
         toast.success('Room ID has been copied to your clipboard');
     } catch (err) {
         toast.error('Could not copy the Room ID');
@@ -80,9 +88,24 @@ const EditorPage = () => {
     }
   }
 
+  async function shareLink(){
+    try{
+      await navigator.share(baseURL+"/"+roomID)
+
+    }
+    catch(ex){
+      toast.error('Could not invite others');
+
+    }
+
+  }
+
+
   function leaveRoom(){
     reactNavigator('/');
   }
+
+
 
   if (!location.state) {
     return <Navigate to="/" />;
@@ -103,6 +126,7 @@ const EditorPage = () => {
             ))}
           </div>
         </div>
+        <button className="btn copyBtn" onClick={shareLink}>Invite Others to Join the Room  <img wi src={shareIcon} alt="share icon"/></button>
         <button className="btn copyBtn" onClick={copyRoomId}>Copy Room ID</button>
         <button className="btn leaveBtn" onClick={leaveRoom}>Leave</button>
       </div>

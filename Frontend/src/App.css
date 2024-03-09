@@ -3,10 +3,15 @@
   align-items: center;
   color: rgb(0, 0, 0);
   height: 100vh;
-  justify-content: right;
-  padding-right: 20%;
+justify-content: center;
+  /* justify-content: right; */
+  /* padding-right: 20%; */
   background: url(../public/bg1.jpg);
 }
+
+
+
+
 .formWrapper {
   background-color: rgb(236, 238, 255);
   padding: 45px;
@@ -105,6 +110,12 @@
   height: 100vh;
 }
 
+
+
+
+
+
+
 .aside {
   padding: 16px;
   color: #000;
@@ -120,7 +131,17 @@
 .copyBtn{
   background-color: #d0bcff;
   border: 2px solid #7552ff9e;
+  margin-top: 10px;
 }
+
+.copyBtn img{
+  width: 20px;
+  margin-left: 10px;
+  /* margin-top: 5px; */
+  position: relative;
+  top:2px
+}
+
 
 .copyBtn:hover{
   background-color: #8469ee; 
@@ -175,4 +196,38 @@
   border-radius:12px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   margin:0px 58px 0px 58px;
+}
+
+
+
+@media screen and (max-width:500px) {
+
+  .mainwrap{
+    display: flex;
+    flex-direction: column;
+
+
+  }
+
+  .asideinner{
+    .logo{
+
+      gap:10px;
+
+
+    }
+    .homePageLogo{
+      height: 30px;
+      margin: 0;
+    }
+  }
+
+  .editorwrap{
+
+    margin: 0px;
+  }
+
+ 
+
+  
 }

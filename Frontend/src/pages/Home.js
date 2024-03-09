@@ -1,13 +1,16 @@
-import React,{useState}  from 'react';
+import React,{useEffect, useState}  from 'react';
 import {v4} from 'uuid';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const Home = () => {
     const navigate = useNavigate();
     const [roomID,setRoomID]=useState('');
     const [username,setUsername]=useState('');
+
+    const{roomId:defaultRoomId}=useParams()
+    console.log(defaultRoomId,'roomId')
     const createNewRoom=(e) => {
         e.preventDefault();
         const id=v4();
@@ -32,6 +35,22 @@ const Home = () => {
             joinRoom();
         }
     }
+
+
+    useEffect(() => {
+
+        if(defaultRoomId){
+
+            setRoomID(defaultRoomId);
+
+        }
+      
+    
+      return () => {
+        
+      }
+    }, [])
+    
 
   return (
     <div className="homePageWrapper"> 
